@@ -1,0 +1,25 @@
+<h1>
+    This is todo page. WALA!!
+</h1>
+
+<!-- <ul>
+    <li>Dummty 1</li>
+    <li>Dummty 1</li>
+    <li>Dummty 1</li>
+    <li>Dummty 1</li>
+</ul> -->
+<ul>
+    {% for items in all %}
+        <li>{{items.content}}
+            <form action="/removeItem/{{items.id}}/" method='post' style="display: inline;">{% csrf_token%}
+                <input type="submit" value="delete">
+            </form><br><br>
+        </li>
+
+    {%endfor%}    
+</ul>
+<!-- addtodo is a view (method view) -->
+<form action="/addItem/" method='post'>{% csrf_token%}
+    <input type='text' name="content">
+    <input type="submit" value="add">
+</form>
